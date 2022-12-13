@@ -22,7 +22,6 @@ export function activate(context: vscode.ExtensionContext) {
 
 	context.subscriptions.push(disposable);
 	new App(context);
-	console.log('object31231');
 }
 
 // This method is called when your extension is deactivated

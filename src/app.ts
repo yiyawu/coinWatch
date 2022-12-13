@@ -27,8 +27,9 @@ class Index {
   public getAllData () {
     axios(TOTAL_COIN,{
       baseURL: BASIC_URL
-    }).then(res=>{
-      const result = res;
+    }).then((res)=>{
+      console.log(res);
+      const result = res.data;
       if(res.status === 200 && result.data.length) {
         // this.setStatusBar(result.data);
         this.setActivityBar(result.data);
