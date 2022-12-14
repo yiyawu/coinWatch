@@ -1,14 +1,15 @@
 {
   "name": "coinwatch",
   "displayName": "coinWatch",
-  "description": "watch coin price in okx market",
-  "version": "1.0.0",
+  "description": "在欧易市场上查看比特币价格",
+  "version": "1.0.1",
   "publisher": "yiyawu",
   "keywords": [
     "btc",
     "eth",
     "coin",
-    "vscode"
+    "vscode",
+    "okx"
   ],
   "engines": {
     "vscode": "^1.28.0"
@@ -32,14 +33,26 @@
         "coin-price-watch": {
           "type": "array",
           "default": [
-            "btcusdt"
+            "btc",
+            "eth",
+            "doge"
           ],
           "description": "设置您想监控的数字货币"
         },
         "coin-price-updateTime": {
           "type": "number",
-          "default": 10000,
+          "default": 5000,
           "description": "设置请求最新数据的时间间隔，单位：毫秒"
+        },
+        "coin-price-isShowAll": {
+          "type": "boolean",
+          "default": true,
+          "description": "设置是否请求全部数据"
+        },
+        "coin-price-coinPair": {
+          "type": "string",
+          "default": "USDT",
+          "description": "设置您想要的比对币种"
         }
       }
     },
@@ -47,7 +60,7 @@
       "activitybar": [
         {
           "id": "coinWatch",
-          "title": "数字货币价格监控",
+          "title": "价格监控",
           "icon": "img/icon.svg"
         }
       ]
