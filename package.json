@@ -1,0 +1,113 @@
+{
+  "name": "coinwatch",
+  "displayName": "coinWatch",
+  "description": "在欧易市场上查看比特币价格",
+  "version": "1.0.2",
+  "publisher": "yiyawu",
+  "keywords": [
+    "btc",
+    "eth",
+    "coin",
+    "vscode",
+    "okx"
+  ],
+  "engines": {
+    "vscode": "^1.28.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onView:USDT"
+  ],
+  "main": "./dist/extension",
+  "contributes": {
+    "commands": [
+      {
+        "command": "coinwatch",
+        "title": "Hello World"
+      }
+    ],
+    "configuration": {
+      "properties": {
+        "coin-price-watch": {
+          "type": "array",
+          "default": [
+            "btc",
+            "eth",
+            "doge"
+          ],
+          "description": "设置您想监控的数字货币"
+        },
+        "coin-price-updateTime": {
+          "type": "number",
+          "default": 5000,
+          "description": "设置请求最新数据的时间间隔，单位：毫秒"
+        },
+        "coin-price-isShowAll": {
+          "type": "boolean",
+          "default": true,
+          "description": "设置是否请求全部数据"
+        },
+        "coin-price-coinPair": {
+          "type": "string",
+          "default": "USDT",
+          "description": "设置您想要的比对币种"
+        }
+      }
+    },
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "coinWatch",
+          "title": "价格监控",
+          "icon": "img/icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "coinWatch": [
+        {
+          "id": "USDT",
+          "name": "USDT"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "yarn run package",
+    "compile": "webpack",
+    "watch": "webpack --watch",
+    "package": "webpack --mode production --devtool hidden-source-map",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "yarn run compile-tests && yarn run compile && yarn run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js",
+    "vscePackage": "vsce package --no-yarn",
+    "vscePublish": "vsce publish --no-yarn"
+  },
+  "devDependencies": {
+    "@types/glob": "^8.0.0",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "16.x",
+    "@types/vscode": "^1.28.0",
+    "@typescript-eslint/eslint-plugin": "^5.45.0",
+    "@typescript-eslint/parser": "^5.45.0",
+    "@vscode/test-electron": "^2.2.0",
+    "eslint": "^8.28.0",
+    "glob": "^8.0.3",
+    "mocha": "^10.1.0",
+    "ts-loader": "^9.4.1",
+    "typescript": "^4.9.3",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.0"
+  },
+  "dependencies": {
+    "axios": "^1.2.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yiyawu/coinWatch"
+  }
+}
